@@ -42,6 +42,10 @@ export default {
       const result = this.questionProvider.calcChange(answer)
       this.percent += result.change
       this.previousResult = result.text
+      let delayMS = 750
+      if (result.text) {
+        delayMS = 2000
+      }
       this.question = {
         text: '',
         answers: []
@@ -49,7 +53,7 @@ export default {
       window.setTimeout(() => {
         this.question = this.questionProvider.getNext(this.time)
         this.previousResult = ''
-      }, 1000)
+      }, delayMS)
     }
   }
 }
